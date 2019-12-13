@@ -14,15 +14,21 @@ driver.get(url)
 #<td>MU</td><td>8</td><td>30.5</td><td>7.1</td><td>17.1</td><td>.416</td><td>3.8</td><td>8.4</td><td>.448</td><td>7.1</td><td>8.4</td><td>.851</td><td>0.2</td><td>2.1</td><td>2.4</td><td>2.8</td><td>0.8</td><td>0.1</td><td>25.1</td></tr>
 
 items = len(driver.find_elements_by_class_name("nowrap"))
-#items = 95
 print(items)
+
 total = []
+
 players = driver.find_elements_by_class_name("nowrap")
-for item in range(1, items):
-    print(players[item].text)
+for item in range(1, items + 1):
+    #//*[@id="table-7185"]/tbody/tr[1]/td[1]/a
+    #/html/body/div[2]/div[3]/div[1]/table/tbody/tr[1]/td[1]/a
+    player = driver.find_element_by_xpath('/html/body/div[2]/div[3]/div[1]/table/tbody/tr['+str(item)+']/td[1]/a')
+    print(player.text)
+    total.append(player.text)
+    #print(players[item].text)
     #for player in players:
-    total.append(players[item].text)
-    print(item)
+    #total.append(players[item].text)
+    #print(item)
 df = pd.DataFrame(total)
 df.to_csv('players.csv')
 driver.close()
