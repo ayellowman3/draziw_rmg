@@ -8,3 +8,8 @@ Download chrome driver
 https://chromedriver.chromium.org/home
 
 localpath.py
+
+G's mac
+executable_path=r'/Users/georgehuang/chromedriver.exe'
+
+G's desktop
